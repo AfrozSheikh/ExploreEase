@@ -22,7 +22,7 @@ function Navbar() {
         <div className="space-x-6 text-white">
           <Link to="/" className="hover:text-gray-300">Home</Link>
          <Link to="/about" className="hover:text-gray-300">About</Link>
-          
+          <Link to="/destinations" className="hover:text-gray-300"> Destinations</Link>
           
           
   

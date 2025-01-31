@@ -13,6 +13,7 @@ import Navbar from './components/Navbar';
 import { Home } from './components/Home';
 import { Footer } from './components/Footer';
 import { About } from './components/About';
+import Location from './components/Location';
 function App() {
   const { user } = useContext(AuthContext);
 
@@ -30,9 +31,10 @@ function App() {
           <Route path="/book-guide" element={<BookGuide />} />
           <Route path="/guide-dashboard" element={<GuideDashboard />} /> {/* New route */}
           
-          <Route path="/destinations" element={user ? <Destinations /> : <Navigate to="/login" />} />
+          <Route path="/destinations" element={<Destinations />}  />
           <Route path="/transport-type" element={user ? <TransportType /> : <Navigate to="/login" />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/location" element={<Location />} />
         </Routes>
       </div>
       <Footer/>

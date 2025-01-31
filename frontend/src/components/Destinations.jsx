@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import destinations from '../data/destinations';
+import AuthContext from '../context/AuthContext';
 
 function Destinations() {
   const navigate = useNavigate();
-
+const {user} = useContext(AuthContext)
   const handleSelectDestination = (destination) => {
     // Save selected destination information to localStorage
     localStorage.setItem('selectedDestination', JSON.stringify(destination));
@@ -28,12 +29,14 @@ function Destinations() {
             <p className="text-gray-600"><strong>Opens at:</strong> {destination.opensAt}</p>
             <p className="text-gray-600"><strong>Closes at:</strong> {destination.closesAt}</p>
   
-            <button
+           {
+            user?.role==="traveler" ? ( <button
               onClick={() => handleSelectDestination(destination)}
               className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
             >
               Select Destination
-            </button>
+            </button>) : (<span> </span>) 
+           }
           </div>
         ))}
       </div>
