@@ -9,9 +9,9 @@ const transportTimes = [
 
 // Price ranges for transport types
 const transportPriceRanges = {
-  Bus: { min: 600, max: 800 },
-  Train: { min: 200, max: 250 },
-  Plane: { min: 8000, max: 12000 },
+  Bus: { min: 800, max: 2000 },
+  Train: { min: 600, max: 1500 },
+  Plane: { min: 7000, max: 15000 },
 };
 
 function TransportType() {
@@ -42,8 +42,8 @@ function TransportType() {
       randomTransportOptions.push({
         type: 'Bus',
         departureTime: transportTimes[Math.floor(Math.random() * transportTimes.length)],
-        source: 'New York',
-        destination: destination.name,
+        source: 'Pune',
+        destination: destination.city,
         price: getRandomPrice('Bus'),
       });
     }
@@ -51,8 +51,8 @@ function TransportType() {
       randomTransportOptions.push({
         type: 'Train',
         departureTime: transportTimes[Math.floor(Math.random() * transportTimes.length)],
-        source: 'Los Angeles',
-        destination: destination.name,
+        source: 'Chh.SambhajiNagar',
+        destination: destination.city,
         price: getRandomPrice('Train'),
       });
     }
@@ -60,8 +60,8 @@ function TransportType() {
       randomTransportOptions.push({
         type: 'Plane',
         departureTime: transportTimes[Math.floor(Math.random() * transportTimes.length)],
-        source: 'Chicago',
-        destination: destination.name,
+        source: 'Mumbai',
+        destination: destination.city,
         price: getRandomPrice('Plane'),
       });
     }
@@ -104,7 +104,7 @@ function TransportType() {
               <p><strong>Departure Time:</strong> {option.departureTime}</p>
               <p><strong>From:</strong> {option.source}</p>
               <p><strong>To:</strong> {option.destination}</p>
-              <p><strong>Price:</strong> ${option.price}</p>
+              <p><strong>Price:</strong>₹ {option.price}</p>
               <button
                 onClick={() => handlePayment(option)}
                 className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-200"

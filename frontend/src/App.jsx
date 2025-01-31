@@ -8,7 +8,7 @@ import TransportType from './components/TransportType';
 import Payment from './components/Payment';
 import Profile from './components/Profile';
 import BookGuide from './components/BookGuide';
-import GuideDashboard from './components/GuideDashboard'; // Import the new component
+import GuideDashboard from './components/GuideDashboard'; 
 import Navbar from './components/Navbar';
 import { Home } from './components/Home';
 import { Footer } from './components/Footer';
@@ -29,10 +29,10 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path='/about' element={<About/>}  />
           <Route path="/book-guide" element={<BookGuide />} />
-          <Route path="/guide-dashboard" element={<GuideDashboard />} /> {/* New route */}
+          <Route path="/guide-dashboard" element={<GuideDashboard />} /> 
           
           <Route path="/destinations" element={<Destinations />}  />
-          <Route path="/transport-type" element={user ? <TransportType /> : <Navigate to="/login" />} />
+          <Route path="/transport-type" element={ <TransportType />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/location" element={<Location />} />
         </Routes>
