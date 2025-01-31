@@ -93,6 +93,8 @@ export const AuthProvider = ({ children }) => {
     setToken(newToken);
     setUser(userData);
     localStorage.setItem('token', newToken); // Save token in localStorage
+    console.log(user);
+    
   };
 
   // Handle user logout

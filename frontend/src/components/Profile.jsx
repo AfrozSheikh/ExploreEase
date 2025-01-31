@@ -33,6 +33,9 @@ function Profile() {
         <div className="mb-4">
           <p className="text-lg"><strong>Name:</strong> {user?.name}</p>
           <p className="text-lg"><strong>Email:</strong> {user?.email}</p>
+         
+    
+
         </div>
   
         {user.role === "traveler" && (
@@ -43,6 +46,7 @@ function Profile() {
                 <h3 className="text-xl font-semibold">Booked Guide:</h3>
                 <p className="text-lg">{selectedGuide.name}</p>
                 <p className="text-lg">{selectedGuide.email}</p>
+                <p className="text-lg">{selectedGuide.gender}</p>
               </div>
             )}
   

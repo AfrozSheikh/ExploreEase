@@ -6,6 +6,7 @@ import AuthContext from '../context/AuthContext';
 function Destinations() {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+console.log(user);
 
   // State to track selected state for filtering
   const [selectedState, setSelectedState] = useState("All");
@@ -86,14 +87,14 @@ function Destinations() {
             <h3 className="text-xl font-semibold text-gray-800">{destination.name}</h3>
             <p className="text-gray-600"><strong>City:</strong> {destination.city}</p>
             <p className="text-gray-600"><strong>State:</strong> {destination.state}</p>
-            <p>
+            <div>
               {destination.opensAt === "24 hours" && destination.closesAt === "24 hours"
                 ? <p className="text-gray-600">Open 24 hours</p>
                 : (<div> 
                      <p className="text-gray-600"><strong>Opens at:</strong> {destination.opensAt}</p>
                      <p className="text-gray-600"><strong>Closes at:</strong> {destination.closesAt}</p>
                    </div>)}
-            </p>
+            </div>
             <p className="text-gray-600"><strong>Best Time to Visit:</strong> {destination.bestTimeToVisit}</p>
   
             {user?.role === "traveler" ? (

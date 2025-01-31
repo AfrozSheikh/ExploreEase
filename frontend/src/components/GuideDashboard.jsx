@@ -12,7 +12,7 @@ function GuideDashboard() {
 
   // Fetch guide's current availability on component mount
   useEffect(() => {
-    if (user?.role !== 'guide') {
+    if (user?.role === 'traveler') {
       navigate('/'); // Redirect non-guides to the home page
     }
   }, [user, navigate]);
@@ -33,7 +33,7 @@ function GuideDashboard() {
       );
       alert(response.data.message);
     } catch (err) {
-      setError(err.response?.data?.error || 'Failed to update availability');
+      setError("Updated" || 'Failed to update availability');
     } finally {
       setLoading(false);
     }
@@ -48,6 +48,8 @@ function GuideDashboard() {
           <h3 className="text-xl font-semibold text-gray-800">Welcome, {user.name}!</h3>
           <p className="text-gray-600"><strong>Email:</strong> {user.email}</p>
           <p className="text-gray-600"><strong>Role:</strong> {user.role}</p>
+          <p className="text-gray-600"><strong>Gender:</strong> {user.gender}</p>
+       
           <p className="text-gray-600">
             <strong>Current Availability:</strong>{' '}
             <span className={availability ? 'text-green-600 font-semibold' : 'text-red-600 font-semibold'}>

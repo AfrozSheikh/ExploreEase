@@ -51,6 +51,7 @@ function BookGuide() {
           >
             <h3 className="text-xl font-semibold text-gray-800">{guide.name}</h3>
             <p className="text-gray-600">{guide.email}</p>
+            <p className="text-gray-600">{guide.gender}</p>
             <button 
               onClick={() => handleBookGuide(guide)}
               className="mt-4 px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-300"

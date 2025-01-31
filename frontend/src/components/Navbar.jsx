@@ -38,6 +38,10 @@ function Navbar() {
           ) : (
             <Link to="/login" className="hover:text-gray-300">Login</Link>
           )}
+
+          {
+            user?.role==='guide' ? (<Link to="/guide-dashboard" className="hover:text-gray-300"> DashBoard</Link>) : (<span> </span>) 
+          }
         </div>
       </div>
     </nav>
