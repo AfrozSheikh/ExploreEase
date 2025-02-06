@@ -101,6 +101,8 @@ const MapComponent = ({ destinationName }) => {
           // Fetch the route along roads if destination coordinates are available
           if (destinationCoords) {
             fetchRouteAlongRoads([latitude, longitude], [destinationCoords.lat, destinationCoords.lng]);
+            console.log(destinationCoords);
+            
           }
         },
         (error) => {
