@@ -12,11 +12,11 @@ export const Home = () => {
         
         {/* Background Image */}
         <div className="absolute inset-0">
-          <img
-            src="/api/placeholder/1920/1080"
-            alt="Travel Background"
+          {/* <img
+            src=""
+            alt=""
             className="w-full h-full object-cover"
-          />
+          /> */}
         </div>
 
         {/* Content */}
@@ -32,7 +32,7 @@ export const Home = () => {
           </p>
           <div className="flex justify-center gap-4 animate-fade-in-up-delay-3">
             <Link
-              to="/explore"
+              to="/destinations"
               className="group px-6 py-3 bg-white text-blue-900 rounded-full font-semibold text-md transition-all hover:bg-blue-50 flex items-center gap-2"
             >
               Start Exploring
@@ -86,7 +86,7 @@ export const Home = () => {
             Join thousands of travelers who've discovered their perfect journey with ExplorEase.
           </p>
           <Link
-            to="/book"
+            to="/destinations"
             className="inline-flex items-center gap-2 px-6 py-3 bg-white text-blue-600 rounded-full font-semibold text-md transition-all hover:bg-blue-50"
           >
             Book Your Journey

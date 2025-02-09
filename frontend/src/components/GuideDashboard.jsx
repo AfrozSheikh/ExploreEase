@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
+import toast from 'react-hot-toast';
 
 function GuideDashboard() {
   const { user } = useContext(AuthContext);
@@ -31,7 +32,7 @@ function GuideDashboard() {
           },
         }
       );
-      alert(response.data.message);
+      toast.success(response.data.message);
     } catch (err) {
       setError("Updated" || 'Failed to update availability');
     } finally {

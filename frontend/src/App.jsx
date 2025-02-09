@@ -14,12 +14,14 @@ import { Home } from './components/Home';
 import { Footer } from './components/Footer';
 import { About } from './components/About';
 import Location from './components/Location';
+import { Toaster } from 'react-hot-toast';
 function App() {
   const { user } = useContext(AuthContext);
 
   return (
     <Router>
       <Navbar/>
+      <Toaster position='top-center' /> {/* ✅ Global Toaster */}
       <div className="container mx-auto p-4">
         <Routes>
 

@@ -99,18 +99,37 @@ function TransportType() {
         <h4 className="text-lg font-medium mb-4">Available Transport:</h4>
         {transportOptions.length > 0 ? (
           transportOptions.map((option, index) => (
-            <div key={index} className="transport-card mb-6 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
-              <h5 className="text-xl font-bold">{option.type}</h5>
-              <p><strong>Departure Time:</strong> {option.departureTime}</p>
-              <p><strong>From:</strong> {option.source}</p>
-              <p><strong>To:</strong> {option.destination}</p>
-              <p><strong>Price:</strong>₹ {option.price}</p>
-              <button
-                onClick={() => handlePayment(option)}
-                className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-200"
-              >
-                Proceed to Payment
-              </button>
+            <div key={index} className="transport-card mb-6 p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300 border-2 border-gray-200">
+              <div className="flex justify-between items-center mb-4">
+                <h5 className="text-xl font-bold">{option.type}</h5>
+                <span className="text-sm text-gray-600">Ticket ID: #{Math.floor(Math.random() * 100000)}</span>
+              </div>
+              <div className="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                  <p className="text-sm text-gray-600"><strong>Departure Time:</strong></p>
+                  <p className="text-lg font-medium">{option.departureTime}</p>
+                </div>
+                <div>
+                  <p className="text-sm text-gray-600"><strong>Price:</strong></p>
+                  <p className="text-lg font-medium">₹ {option.price}</p>
+                </div>
+                <div>
+                  <p className="text-sm text-gray-600"><strong>From:</strong></p>
+                  <p className="text-lg font-medium">{option.source}</p>
+                </div>
+                <div>
+                  <p className="text-sm text-gray-600"><strong>To:</strong></p>
+                  <p className="text-lg font-medium">{option.destination}</p>
+                </div>
+              </div>
+              <div className="border-t flex items-center justify-center border-gray-200 pt-4">
+                <button
+                  onClick={() => handlePayment(option)}
+                  className=" px-6 py-3 bg-blue-500 text-white rounded-lg  hover:bg-blue-600 transition duration-200"
+                >
+                  Proceed to Payment
+                </button>
+              </div>
             </div>
           ))
         ) : (

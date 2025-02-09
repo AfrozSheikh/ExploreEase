@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import toast from 'react-hot-toast';
 function BookGuide() {
   const [guides, setGuides] = useState([]);
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ function BookGuide() {
     localStorage.setItem('selectedGuide', JSON.stringify(guide));
 
     // Show the alert
-    alert(`${guide.name} will contact you soon.`);
+    toast.success(`${guide.name} will contact you soon.`);
 
     // Navigate to profile after 3 seconds
     setTimeout(() => {
