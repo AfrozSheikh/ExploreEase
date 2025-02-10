@@ -1,3 +1,29 @@
+import ajanta from './static/ajnta.webp';
+import allepey from './static/allepey.webp';
+import beach from './static/beach.webp';
+import cherra from './static/cherrapunji.jpg';
+import coorg from './static/coorg-mist.webp';
+import darjeeling from './static/darjeeling.webp';
+import elephanta from './static/elephanta-caves.webp';
+import gateway from './static/gateway.jpg';
+import ghat from './static/ghat.webp';
+import hampi from './static/hampi-at-sunset.webp';
+import khajuraho from './static/khajuraho.webp';
+import lehladakh from './static/lehladakh.webp';
+import lonavla from './static/lonavla.webp';
+import mysore from './static/mysore.webp';
+import natinalpark from './static/natinal park.webp';
+import nationalpark from './static/national park.webp';
+import pinkpalace from './static/pink-palace-jaipur.webp';
+import rann from './static/rann of kutch.webp';
+import redfort from './static/red-fort.webp';
+import rishikesh from './static/Rishikesh-haridwar.webp';
+import shirdi from './static/shirdi.webp';
+import sinhgard from './static/sihngard.webp';
+import tajmahal from './static/taj mahal.webp';
+import victoria from './static/Victoria-Memorial-Kolkata.webp';
+import shimla from './static/4286.webp';
+
 const destinations = [
   // Northern India
   {
@@ -7,7 +33,7 @@ const destinations = [
     opensAt: "06:00 AM",
     closesAt: "06:30 PM",
     bestTimeToVisit: "October to March",
-    imageUrl: "https://source.unsplash.com/featured/?Taj Mahal",
+    imageUrl: `${tajmahal}`,
   },
 
   {
@@ -17,7 +43,7 @@ const destinations = [
     opensAt: "09:00 AM",
     closesAt: "06:00 PM",
     bestTimeToVisit: "October to March",
-    imageUrl: "https://source.unsplash.com/featured/?Red Fort, India Gate",
+    imageUrl:`${redfort}`
   },
   {
     name: "Ghats, Kashi Vishwanath",
@@ -26,7 +52,7 @@ const destinations = [
     opensAt: "24 hours",
     closesAt: "24 hours",
     bestTimeToVisit: "November to March",
-    imageUrl: "https://source.unsplash.com/featured/?Varanasi Ghats",
+    imageUrl:`${ghat}`
   },
   {
     name: "Rishikesh & Haridwar",
@@ -35,7 +61,7 @@ const destinations = [
     opensAt: "24 hours",
     closesAt: "24 hours",
     bestTimeToVisit: "October to March",
-    imageUrl: "https://source.unsplash.com/featured/?Rishikesh Haridwar",
+    imageUrl: `${rishikesh}`
   },
   {
     name: "Pink City",
@@ -44,7 +70,7 @@ const destinations = [
     opensAt: "-",
     closesAt: "-",
     bestTimeToVisit: "November to February",
-    imageUrl: "https://source.unsplash.com/featured/?Jaipur Udaipur",
+    imageUrl:`${pinkpalace}`
   },
 
   // Himalayan Region
@@ -55,7 +81,7 @@ const destinations = [
     opensAt: "09:00 AM",
     closesAt: "06:00 PM",
     bestTimeToVisit: "May to September",
-    imageUrl: "https://source.unsplash.com/featured/?Leh Ladakh",
+    imageUrl: `${lehladakh}`
   },
   {
     name: "Shimla & Manali",
@@ -64,7 +90,7 @@ const destinations = [
     opensAt: "09:00 AM",
     closesAt: "06:00 PM",
     bestTimeToVisit: "November to February",
-    imageUrl: "https://source.unsplash.com/featured/?Shimla Manali",
+    imageUrl: `${shimla}`
   },
   {
     name: "Darjeeling & Sikkim",
@@ -73,7 +99,7 @@ const destinations = [
     opensAt: "09:00 AM",
     closesAt: "06:00 PM",
     bestTimeToVisit: "March to June",
-    imageUrl: "https://source.unsplash.com/featured/?Darjeeling Sikkim",
+    imageUrl: `${darjeeling}`
   },
 
   // Western India
@@ -84,7 +110,7 @@ const destinations = [
     opensAt: "24 hours",
     closesAt: "24 hours",
     bestTimeToVisit: "November to March",
-    imageUrl: "https://source.unsplash.com/featured/?Gateway of India, Marine Drive",
+    imageUrl:`${gateway}`
   },
   {
     name: "Beaches, Churches",
@@ -93,7 +119,7 @@ const destinations = [
     opensAt: "09:00 AM",
     closesAt: "06:00 PM",
     bestTimeToVisit: "Summer",
-    imageUrl: "https://source.unsplash.com/featured/?Goa Beaches",
+    imageUrl: `${beach}`
   },
   {
     name: "Rann of Kutch",
@@ -102,7 +128,7 @@ const destinations = [
     opensAt: "09:00 AM",
     closesAt: "06:00 PM",
     bestTimeToVisit: "November to February",
-    imageUrl: "https://source.unsplash.com/featured/?Rann of Kutch",
+    imageUrl: `${rann}`
   },
 
   // Southern India
@@ -113,7 +139,7 @@ const destinations = [
     opensAt: "09:00 AM",
     closesAt: "06:00 PM",
     bestTimeToVisit: "October to March",
-    imageUrl: "https://source.unsplash.com/featured/?Kerala Munnar",
+    imageUrl:`${allepey}`
   },
   {
     name: "Hampi",
@@ -122,7 +148,7 @@ const destinations = [
     opensAt: "06:00 AM",
     closesAt: "06:00 PM",
     bestTimeToVisit: "October to February",
-    imageUrl: "https://source.unsplash.com/featured/?Hampi",
+    imageUrl: `${hampi}`
   },
   {
     name: "Mysore Palace",
@@ -131,7 +157,7 @@ const destinations = [
     opensAt: "10:00 AM",
     closesAt: "05:30 PM",
     bestTimeToVisit: "September to February",
-    imageUrl: "https://source.unsplash.com/featured/?Mysore Palace",
+    imageUrl: `${mysore}`
   },
   {
     name: "Ooty & Coorg",
@@ -140,7 +166,7 @@ const destinations = [
     opensAt: "09:00 AM",
     closesAt: "05:00 PM",
     bestTimeToVisit: "October to March",
-    imageUrl: "https://source.unsplash.com/featured/?Ooty Coorg",
+   imageUrl: `${coorg}`
   },
 
   // Eastern & North-Eastern India
@@ -151,7 +177,7 @@ const destinations = [
     opensAt: "09:00 AM",
     closesAt: "06:00 PM",
     bestTimeToVisit: "October to March",
-    imageUrl: "https://source.unsplash.com/featured/?Victoria Memorial, Howrah Bridge",
+    imageUrl: `${victoria}`
   },
   {
     name: "Cherrapunji, Shillong",
@@ -160,7 +186,7 @@ const destinations = [
     opensAt: "09:00 AM",
     closesAt: "06:00 PM",
     bestTimeToVisit: "March to June",
-    imageUrl: "https://source.unsplash.com/featured/?Meghalaya Cherrapunji",
+    imageUrl: `${cherra}`
   },
   {
     name: "Kaziranga National Park",
@@ -169,7 +195,7 @@ const destinations = [
     opensAt: "06:00 AM",
     closesAt: "06:00 PM",
     bestTimeToVisit: "November to April",
-    imageUrl: "https://source.unsplash.com/featured/?Kaziranga National Park",
+   imageUrl: `${natinalpark}`
   },
 
   // Central India
@@ -180,7 +206,7 @@ const destinations = [
     opensAt: "09:00 AM",
     closesAt: "06:00 PM",
     bestTimeToVisit: "October to March",
-    imageUrl: "https://source.unsplash.com/featured/?Khajuraho",
+    imageUrl: `${khajuraho}`
   },
   {
     name: "Kanha & Bandhavgarh National Parks",
@@ -189,7 +215,7 @@ const destinations = [
     opensAt: "09:00 AM",
     closesAt: "06:00 PM",
     bestTimeToVisit: "November to June",
-    imageUrl: "https://source.unsplash.com/featured/?Kanha Bandhavgarh National Parks",
+    imageUrl: `${nationalpark}`
   },
 
   // **Additional destinations in Maharashtra**
@@ -200,7 +226,7 @@ const destinations = [
     opensAt: "09:00 AM",
     closesAt: "05:00 PM",
     bestTimeToVisit: "October to March",
-    imageUrl: "https://source.unsplash.com/featured/?Ajanta Ellora Caves",
+    imageUrl: `${ajanta}`
   },
   {
     name: "Shirdi Sai Baba Temple",
@@ -209,7 +235,7 @@ const destinations = [
     opensAt: "05:00 AM",
     closesAt: "10:00 PM",
     bestTimeToVisit: "All year round",
-    imageUrl: "https://source.unsplash.com/featured/?Shirdi Sai Baba Temple",
+   imageUrl: `${shirdi}`
   },
   {
     name: "Lonavala & Khandala",
@@ -218,7 +244,7 @@ const destinations = [
     opensAt: "09:00 AM",
     closesAt: "06:00 PM",
     bestTimeToVisit: "October to March",
-    imageUrl: "https://source.unsplash.com/featured/?Lonavala Khandala",
+    imageUrl: `${lonavla}`
   },
   {
     name: "Sinhagad Fort",
@@ -227,7 +253,7 @@ const destinations = [
     opensAt: "09:00 AM",
     closesAt: "06:00 PM",
     bestTimeToVisit: "October to February",
-    imageUrl: "https://source.unsplash.com/featured/?Sinhagad Fort",
+   imageUrl: `${sinhgard}`
   },
   {
     name: "Elephanta Caves",
@@ -236,7 +262,7 @@ const destinations = [
     opensAt: "09:00 AM",
     closesAt: "05:30 PM",
     bestTimeToVisit: "October to March",
-    imageUrl: "https://source.unsplash.com/featured/?Elephanta Caves",
+   imageUrl: `${elephanta}`
   }
 ];
 

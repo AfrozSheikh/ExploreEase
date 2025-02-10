@@ -216,7 +216,7 @@ function Payment() {
               <p><strong>Departure Time:</strong> {selectedTransport.departureTime}</p>
               <p><strong>From:</strong> {selectedTransport.source}</p>
               <p><strong>To:</strong> {selectedTransport.destination}</p>
-              <p><strong>Price:</strong> ${selectedTransport.price}</p>
+              <p><strong>Price:</strong> Rs.{selectedTransport.price}</p>
 
               {/* Payment Gateway with QR Code */}
               {showGateway && (
@@ -228,7 +228,7 @@ function Payment() {
                     {/* QR Code Generator */}
                     <div className="flex justify-center my-4">
                       <QRCodeSVG
-                        value={`PAYMENT:${selectedTransport.price} USD for ${selectedTransport.type}`}
+                        value={`PAYMENT:${selectedTransport.price} Rs for ${selectedTransport.type}`}
                         size={150}
                         bgColor="#ffffff"
                         fgColor="#000000"
