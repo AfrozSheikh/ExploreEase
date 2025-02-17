@@ -84,7 +84,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import axios from "axios";
 
-const MapComponent = ({ destinationName }) => {
+const MapComponent = ({ destinationName, setUserCity }) => {
   const [currentLocation, setCurrentLocation] = useState(null);
   const [destinationCoords, setDestinationCoords] = useState(null);
   const [route, setRoute] = useState([]);
@@ -98,11 +98,12 @@ const MapComponent = ({ destinationName }) => {
           const { latitude, longitude } = position.coords;
           setCurrentLocation([latitude, longitude]);
 
+          // Reverse geocode to get the city name from coordinates
+          fetchCityName(latitude, longitude);
+
           // Fetch the route along roads if destination coordinates are available
           if (destinationCoords) {
             fetchRouteAlongRoads([latitude, longitude], [destinationCoords.lat, destinationCoords.lng]);
-            console.log(destinationCoords);
-            
           }
         },
         (error) => {
@@ -139,6 +140,7 @@ const MapComponent = ({ destinationName }) => {
         `http://router.project-osrm.org/route/v1/driving/${start[1]},${start[0]};${end[1]},${end[0]}?overview=full&geometries=geojson`
       );
       const data = response.data;
+
       if (data.routes && data.routes.length > 0) {
         // Extract the route coordinates
         const routeCoordinates = data.routes[0].geometry.coordinates.map(coord => [coord[1], coord[0]]);
@@ -153,6 +155,23 @@ const MapComponent = ({ destinationName }) => {
     }
   };
 
+  // Fetch city name using reverse geocoding (OpenCage API)
+  const fetchCityName = async (latitude, longitude) => {
+    try {
+      const apiKey = 'a7eab927132743638ce42498c77ac927'; // Replace with your OpenCage API key
+      const response = await axios.get(
+        `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`
+      );
+      const data = response.data;
+      if (data.results && data.results.length > 0) {
+        const city = data.results[0].components.city || data.results[0].components.town;
+        setUserCity(city);
+      }
+    } catch (err) {
+      console.error("Error fetching city name:", err);
+    }
+  };
+
   if (!currentLocation || !destinationCoords) {
     return <p>Loading map...</p>;
   }
@@ -164,13 +183,8 @@ const MapComponent = ({ destinationName }) => {
         zoom={13}
         style={{ height: "500px", width: "100%" }}
       >
-        {/* <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        /> */}
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-         
         />
         <Marker position={currentLocation}>
           <Popup>Your Current Location</Popup>
@@ -182,11 +196,11 @@ const MapComponent = ({ destinationName }) => {
       </MapContainer>
 
       {/* Display Distance */}
-      {distance && (
-        <div>
-          <p><strong>Distance:</strong> {distance} km</p>
-        </div>
-      )}
+      <div className="mt-4">
+        {distance && (
+          <p><strong>Distance to {destinationName}:</strong> {distance} km</p>
+        )}
+      </div>
     </div>
   );
 };

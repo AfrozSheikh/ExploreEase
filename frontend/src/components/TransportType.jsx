@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const transportTypes = ['Bus', 'Train', 'Plane'];
 const transportTimes = [
@@ -99,7 +100,13 @@ function TransportType() {
         <h4 className="text-lg font-medium mb-4">Available Transport:</h4>
         {transportOptions.length > 0 ? (
           transportOptions.map((option, index) => (
-            <div key={index} className="transport-card mb-6 p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300 border-2 border-gray-200">
+            <motion.div 
+              key={index} 
+              className="transport-card mb-6 p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300 border-2 border-gray-200"
+              initial={{ opacity: 0, y: 50 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ duration: 0.6, delay: 0.2 * index }}
+            >
               <div className="flex justify-between items-center mb-4">
                 <h5 className="text-xl font-bold">{option.type}</h5>
                 <span className="text-sm text-gray-600">Ticket ID: #{Math.floor(Math.random() * 100000)}</span>
@@ -130,7 +137,7 @@ function TransportType() {
                   Proceed to Payment
                 </button>
               </div>
-            </div>
+            </motion.div>
           ))
         ) : (
           <p>No transport options available.</p>
@@ -138,10 +145,10 @@ function TransportType() {
       </div>
     </div>
   );
-  
 }
 
 export default TransportType;
+
 // components/TransportType.js
 // components/TransportType.js
 // import React, { useState, useEffect } from "react";

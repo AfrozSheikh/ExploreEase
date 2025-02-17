@@ -25,28 +25,33 @@ function Navbar() {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6 text-white items-center">
-          <Link to="/" className="hover:text-gray-300 transition">Home</Link>
-          <Link to="/about" className="hover:text-gray-300 transition">About</Link>
-          <Link to="/destinations" className="hover:text-gray-300 transition">Destinations</Link>
+          <button className="hover:bg-blue-500 px-4 py-2 rounded-md transition">
+            <Link to="/" className="text-white">Home</Link>
+          </button>
+          <button className="hover:bg-blue-500 px-4 py-2 rounded-md transition">
+            <Link to="/about" className="text-white">About</Link>
+          </button>
+          <button className="hover:bg-blue-500 px-4 py-2 rounded-md transition">
+            <Link to="/destinations" className="text-white">Destinations</Link>
+          </button>
 
           {user ? (
             <div className="relative">
               <button
                 onClick={() => setProfileOpen(!profileOpen)}
-                className="hover:text-gray-300 transition focus:outline-none"
+                className="hover:bg-blue-500 px-4 py-2 rounded-md transition focus:outline-none"
               >
                 Profile ▼
               </button>
 
               {profileOpen && (
                 <div className="absolute right-0 mt-2 w-40 bg-white shadow-md rounded-md py-2 text-gray-800 z-50">
-                  <Link
-                    to="/profile"
+                  <button
                     className="block px-4 py-2 hover:bg-gray-100"
                     onClick={() => setProfileOpen(false)}
                   >
-                    Profile
-                  </Link>
+                    <Link to="/profile" className="text-gray-800">Profile</Link>
+                  </button>
                   <button
                     className="block w-full text-left px-4 py-2 hover:bg-red-100 text-red-600"
                     onClick={() => {
@@ -60,11 +65,15 @@ function Navbar() {
               )}
             </div>
           ) : (
-            <Link to="/login" className="hover:text-gray-300 transition">Login</Link>
+            <button className="hover:bg-blue-500 px-4 py-2 rounded-md transition">
+              <Link to="/login" className="text-white">Login</Link>
+            </button>
           )}
 
           {user?.role === "guide" && (
-            <Link to="/guide-dashboard" className="hover:text-gray-300 transition">Dashboard</Link>
+            <button className="hover:bg-blue-500 px-4 py-2 rounded-md transition">
+              <Link to="/guide-dashboard" className="text-white">Dashboard</Link>
+            </button>
           )}
         </div>
 
@@ -80,15 +89,23 @@ function Navbar() {
       {/* Mobile Dropdown Menu */}
       {menuOpen && (
         <div className="md:hidden bg-blue-700 text-white p-4 space-y-4">
-          <Link to="/" className="block hover:text-gray-300 transition" onClick={() => setMenuOpen(false)}>Home</Link>
-          <Link to="/about" className="block hover:text-gray-300 transition" onClick={() => setMenuOpen(false)}>About</Link>
-          <Link to="/destinations" className="block hover:text-gray-300 transition" onClick={() => setMenuOpen(false)}>Destinations</Link>
+          <button className="block hover:bg-blue-500 px-4 py-2 rounded-md transition" onClick={() => setMenuOpen(false)}>
+            <Link to="/" className="text-white">Home</Link>
+          </button>
+          <button className="block hover:bg-blue-500 px-4 py-2 rounded-md transition" onClick={() => setMenuOpen(false)}>
+            <Link to="/about" className="text-white">About</Link>
+          </button>
+          <button className="block hover:bg-blue-500 px-4 py-2 rounded-md transition" onClick={() => setMenuOpen(false)}>
+            <Link to="/destinations" className="text-white">Destinations</Link>
+          </button>
 
           {user ? (
             <>
-              <Link to="/profile" className="block hover:text-gray-300 transition" onClick={() => setMenuOpen(false)}>Profile</Link>
+              <button className="block hover:bg-blue-500 px-4 py-2 rounded-md transition" onClick={() => setMenuOpen(false)}>
+                <Link to="/profile" className="text-white">Profile</Link>
+              </button>
               <button
-                className="block w-full text-left hover:text-red-400 transition"
+                className="block w-full text-left hover:bg-red-100 text-red-600 px-4 py-2 rounded-md transition"
                 onClick={() => {
                   handleLogout();
                   setMenuOpen(false);
@@ -98,11 +115,15 @@ function Navbar() {
               </button>
             </>
           ) : (
-            <Link to="/login" className="block hover:text-gray-300 transition" onClick={() => setMenuOpen(false)}>Login</Link>
+            <button className="block hover:bg-blue-500 px-4 py-2 rounded-md transition" onClick={() => setMenuOpen(false)}>
+              <Link to="/login" className="text-white">Login</Link>
+            </button>
           )}
 
           {user?.role === "guide" && (
-            <Link to="/guide-dashboard" className="block hover:text-gray-300 transition" onClick={() => setMenuOpen(false)}>Dashboard</Link>
+            <button className="block hover:bg-blue-500 px-4 py-2 rounded-md transition" onClick={() => setMenuOpen(false)}>
+              <Link to="/guide-dashboard" className="text-white">Dashboard</Link>
+            </button>
           )}
         </div>
       )}
