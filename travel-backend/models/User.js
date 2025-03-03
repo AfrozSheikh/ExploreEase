@@ -1,15 +1,37 @@
-// const mongoose = require("mongoose");
+
+
+// const mongoose = require('mongoose');
 
 // const UserSchema = new mongoose.Schema({
-//   name: String,
-//   email: { type: String, unique: true },
-//   password: String,
-//   role: { type: String, enum: ["traveler", "guide"], required: true },
-//   availability: { type: Boolean, default: true } // Only for guides
+//   name: {
+//     type: String,
+//     required: true,
+//   },
+//   email: {
+//     type: String,
+//     required: true,
+//     unique: true,
+//   },
+//   password: {
+//     type: String,
+//     required: true,
+//   },
+//   role: {
+//     type: String,
+//     enum: ['traveler', 'guide'],
+//     required: true,
+//   },
+//   gender: {
+//     type: String,
+//     enum: ['male', 'female', 'other'],
+//     required: function () {
+//       return this.role === 'guide';
+//     },
+//   },
 // });
 
-// module.exports = mongoose.model("User", UserSchema);
-
+// const User = mongoose.model('User', UserSchema);
+// module.exports = User;
 
 const mongoose = require('mongoose');
 
@@ -38,6 +60,31 @@ const UserSchema = new mongoose.Schema({
     required: function () {
       return this.role === 'guide';
     },
+  },
+  selectedTransport: {
+    type: {
+      type: String,
+     
+    },
+    departureTime: String,
+    source: String,
+    destination: String,
+    price: Number,
+  },
+  selectedDestination: {
+    name: String,
+    city: String,
+    state: String,
+    opensAt: String,
+    closesAt: String,
+    bestTimeToVisit: String,
+    imageUrl: String,
+  },
+  selectedGuide: {
+    id: String,
+    name: String,
+    email: String,
+    gender: String,
   },
 });
 

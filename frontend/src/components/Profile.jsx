@@ -7,16 +7,9 @@ import { User, MapPin, Calendar, Clock, IndianRupee, Bus, Mail, Ticket } from 'l
 
 function Profile() {
   const { user } = useContext(AuthContext);
-  const [selectedGuide, setSelectedGuide] = useState(null);
-  const [ticketDetails, setTicketDetails] = useState(null);
+ 
 
-  useEffect(() => {
-    const guide = JSON.parse(localStorage.getItem('selectedGuide'));
-    setSelectedGuide(guide);
 
-    const ticket = JSON.parse(localStorage.getItem('ticketDetails'));
-    setTicketDetails(ticket);
-  }, []);
 
   if (!user) {
     return (
@@ -105,7 +98,7 @@ function Profile() {
 
           {user.role === "traveler" && (
             <motion.div variants={containerVariants} className="mt-8 space-y-6">
-              {selectedGuide && (
+              {user.selectedGuide && (
                 <motion.div 
                   variants={itemVariants}
                   className="bg-blue-50 p-6 rounded-xl"
@@ -115,14 +108,14 @@ function Profile() {
                     Booked Guide
                   </h3>
                   <div className="space-y-2 ml-8">
-                    <p className="text-lg">{selectedGuide.name}</p>
-                    <p className="text-lg">{selectedGuide.email}</p>
-                    <p className="text-lg">{selectedGuide.gender}</p>
+                    <p className="text-lg">{user.selectedGuide.name}</p>
+                    <p className="text-lg">{user.selectedGuide.email}</p>
+                    <p className="text-lg">{user.selectedGuide.gender}</p>
                   </div>
                 </motion.div>
               )}
 
-              {ticketDetails && (
+              {user.selectedTransport && (
                 <motion.div 
                   variants={itemVariants}
                   className="bg-blue-50 p-6 rounded-xl"
@@ -134,40 +127,74 @@ function Profile() {
                   <div className="space-y-3 ml-8">
                     <div className="flex items-center space-x-3">
                       <Bus className="text-blue-600" />
-                      <p className="text-lg"><strong>Transport:</strong> {ticketDetails.transport.type}</p>
+                      <p className="text-lg"><strong>Transport:</strong> {user.selectedTransport.type}</p>
                     </div>
                     <div className="flex items-center space-x-3">
                       <Clock className="text-blue-600" />
-                      <p className="text-lg"><strong>Departure:</strong> {ticketDetails.transport.departureTime}</p>
+                      <p className="text-lg"><strong>Departure:</strong> {user.selectedTransport.departureTime}</p>
                     </div>
                     <div className="flex items-center space-x-3">
                       <MapPin className="text-blue-600" />
-                      <p className="text-lg"><strong>From:</strong> {ticketDetails.transport.source}</p>
+                      <p className="text-lg"><strong>From:</strong> {user.selectedTransport.source}</p>
                     </div>
                     <div className="flex items-center space-x-3">
                       <MapPin className="text-blue-600" />
-                      <p className="text-lg"><strong>To:</strong> {ticketDetails.transport.destination}</p>
+                      <p className="text-lg"><strong>To:</strong> {user.selectedTransport.destination}</p>
                     </div>
                     <div className="flex items-center space-x-3">
                       <IndianRupee className="text-blue-600" />
-                      <p className="text-lg"><strong>Price:</strong> ₹{ticketDetails.transport.price}</p>
+                      <p className="text-lg"><strong>Price:</strong> ₹{user.selectedTransport.price}</p>
                     </div>
                   </div>
-
-                  <motion.div 
-                    variants={itemVariants}
-                    className="mt-6"
-                  >
-                    <Link
-                      to="/location"
-                      className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105"
-                    >
-                      <MapPin className="mr-2" />
-                      Track Journey
-                    </Link>
-                  </motion.div>
                 </motion.div>
               )}
+
+              {user.selectedDestination && (
+                <motion.div 
+                  variants={itemVariants}
+                  className="bg-blue-50 p-6 rounded-xl"
+                >
+                  <h3 className="text-xl font-semibold mb-4 flex items-center">
+                    <MapPin className="mr-2 text-blue-600" />
+                    Destination
+                  </h3>
+                  <div className="space-y-3 ml-8">
+                    <div className="flex items-center space-x-3">
+                      <MapPin className="text-blue-600" />
+                      <p className="text-lg"><strong>Place:</strong> {user.selectedDestination.name}</p>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <MapPin className="text-blue-600" />
+                      <p className="text-lg"><strong>City:</strong> {user.selectedDestination.city}, {user.selectedDestination.state}</p>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <Clock className="text-blue-600" />
+                      <p className="text-lg"><strong>Opens:</strong> {user.selectedDestination.opensAt}</p>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <Clock className="text-blue-600" />
+                      <p className="text-lg"><strong>Closes:</strong> {user.selectedDestination.closesAt}</p>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <Calendar className="text-blue-600" />
+                      <p className="text-lg"><strong>Best Time to Visit:</strong> {user.selectedDestination.bestTimeToVisit}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+              
+              <motion.div 
+                variants={itemVariants}
+                className="mt-6"
+              >
+                <Link
+                  to="/location"
+                  className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105"
+                >
+                  <MapPin className="mr-2" />
+                  Track Journey
+                </Link>
+              </motion.div>
             </motion.div>
           )}
         </motion.div>

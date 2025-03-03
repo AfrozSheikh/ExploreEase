@@ -20,18 +20,40 @@ function BookGuide() {
     fetchGuides();
   }, []);
 
-  const handleBookGuide = (guide) => {
-    // Store the selected guide in localStorage
-    localStorage.setItem('selectedGuide', JSON.stringify(guide));
-
-    // Show the alert
-    toast.success(`${guide.name} will contact you soon.`);
-
-    // Navigate to profile after 3 seconds
-    setTimeout(() => {
-      navigate('/profile');
-    }, 3000);
+  const handleBookGuide = async (guide) => {
+    try {
+      // Send the selected guide to the backend
+      const response = await axios.post(
+        "http://localhost:5000/user/book-guide",
+        {
+          guideId: guide._id,
+          guideName: guide.name,
+          guideEmail: guide.email,
+          guideGender: guide.gender,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`, // Ensure user is authenticated
+          },
+        }
+      );
+  
+      // Store the selected guide in localStorage (optional)
+      localStorage.setItem("selectedGuide", JSON.stringify(guide));
+  
+      // Show success message
+      toast.success(response.data.message);
+  
+      // Navigate to profile after 3 seconds
+      setTimeout(() => {
+        navigate("/profile");
+      }, 3000);
+    } catch (error) {
+      console.error("Error booking guide:", error);
+      toast.error("Failed to book guide. Please try again.");
+    }
   };
+  
 
   const handleSkip = () => {
     // Navigate back to the BookGuide page if traveler skips booking

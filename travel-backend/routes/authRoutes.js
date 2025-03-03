@@ -5,18 +5,7 @@ const User = require("../models/User");
 
 const router = express.Router();
 
-// // Register
-// router.post("/signup", async (req, res) => {
-//   try {
-//     const { name, email, password, role } = req.body;
-//     const hashedPassword = await bcrypt.hash(password, 10);
-//     const user = new User({ name, email, password: hashedPassword, role });
-//     await user.save();
-//     res.json({ message: "User registered successfully!" });
-//   } catch (err) {
-//     res.status(400).json({ error: err.message });
-//   }
-// });
+
 // Register
 router.post("/signup", async (req, res) => {
   try {
@@ -52,5 +41,37 @@ router.post("/login", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
+const authMiddleware = require("../authMiddleware/middleware"); // Create this middleware for authentication
+
+// Update selectedTransport & selectedDestination
+router.post("/update-booking", authMiddleware, async (req, res) => {
+  try {
+    const { selectedTransport, selectedDestination } = req.body;
+
+    if (!selectedTransport || !selectedDestination) {
+      return res.status(400).json({ error: "Transport and Destination data are required" });
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(
+      req.user.id,
+      { selectedTransport, selectedDestination },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.json({ message: "Booking details updated successfully", user: updatedUser });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
+
+
+
 
 module.exports = router;

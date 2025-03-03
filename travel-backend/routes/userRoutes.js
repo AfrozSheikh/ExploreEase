@@ -29,4 +29,34 @@ router.get("/me", authMiddleware, async (req, res) => {
   }
 });
 
+// Book a guide for a user
+router.post("/book-guide", authMiddleware, async (req, res) => {
+  try {
+    const { guideId, guideName, guideEmail, guideGender } = req.body;
+
+    if (!guideId || !guideName || !guideEmail || !guideGender) {
+      return res.status(400).json({ error: "All guide details are required." });
+    }
+
+    const user = await User.findById(req.user.id);
+    if (!user) {
+      return res.status(404).json({ error: "User not found." });
+    }
+
+    // Update selectedGuide field in the user document
+    user.selectedGuide = {
+      id: guideId,
+      name: guideName,
+      email: guideEmail,
+      gender: guideGender,
+    };
+
+    await user.save();
+
+    res.json({ message: "Guide booked successfully.", selectedGuide: user.selectedGuide });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 module.exports = router;
